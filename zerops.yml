@@ -46,5 +46,8 @@ zerops:
     run:
       base: nodejs@20
       start: yarn start
+      ports:
+        - port: 3000
+          httpSupport: true
       envVariables:
         BACKEND_URL: http://backend:9000
