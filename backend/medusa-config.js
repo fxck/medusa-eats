@@ -38,7 +38,7 @@ export default defineConfig({
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
-    databaseDriverOptions: { connection: { ssl: { rejectUnauthorized: true } } },
+    databaseDriverOptions: { connection: { ssl: false } },
     redisUrl: REDIS_URL,
   },
   modules: {
