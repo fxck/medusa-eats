@@ -19,8 +19,12 @@ zerops:
         MINIO_ENDPOINT: ${storage_apiUrl}
       REDIS_URL: redis://redis:6379
       initCommands:
-        - zsc execOnce ${appVersionId}_migration npx medusa migrations run
-        - zsc execOnce ${appVersionId}_links npx medusa links sync
-        - zsc execOnce -l initialData npx medusa exec ./src/scripts/seed.ts
-        - zsc execOnce -l initialAdmin -- npx medusa user -e admin@email.com -p supersecret
+        # - zsc execOnce ${appVersionId}_migration npx medusa migrations run
+        # - zsc execOnce ${appVersionId}_links npx medusa links sync
+        # - zsc execOnce -l initialData npx medusa exec ./src/scripts/seed.ts
+        # - zsc execOnce -l initialAdmin -- npx medusa user -e admin@email.com -p supersecret
+        - npx medusa migrations run || true
+        - npx medusa links sync || true
+        - npx medusa exec ./src/scripts/seed.ts || true
+        - npx medusa user -e admin@email.com -p supersecret || true
       start: yarn start
