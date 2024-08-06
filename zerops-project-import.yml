@@ -1,3 +1,4 @@
+#yamlPreprocessor=on
 project:
   name: recipe-medusa-eats
   tags:
@@ -5,6 +6,17 @@ project:
     - medusa
     
 services:
+  - hostname: backend
+    type: nodejs@20
+    buildFromGit: https://github.com/fxck/medusa-eats
+    enableSubdomainAccess: true
+    envSecrets:
+      ADMIN_CORS: ${zeropsSubdomain}
+      COOKIE_SECRET: <@generateRandomString(<32>)>
+      JWT_SECRET: <@generateRandomString(<32>)>
+      MINIO_SECRET_KEY: ${storage_secretAccessKey}
+      MINIO_ACCESS_KEY: ${storage_accessKeyId}
+    
   - hostname: frontend
     type: nodejs@20
     envSecrets:
@@ -13,24 +25,18 @@ services:
   - hostname: storage
     type: object-storage
     objectStorageSize: 2
+    priority: 1
     
   - hostname: redis
     type: keydb@6
     mode: NON_HA
+    priority: 1
 
   - hostname: db
     type: postgresql@14
     mode: HA
-    
-  - hostname: backend
-    type: nodejs@20
-    envSecrets:
-      ADMIN_CORS: https://medusa-admin.fxck.dev
-      COOKIE_SECRET: asdasdasomething
-      JWT_SECRET: something
-      MINIO_SECRET_KEY: ${storage_secretAccessKey}
-      MINIO_ACCESS_KEY: ${storage_accessKeyId}
-    
+    priority: 1
+
   - hostname: adminer
     type: php-apache@8.0
     buildFromGit: https://github.com/zeropsio/recipe-adminer
