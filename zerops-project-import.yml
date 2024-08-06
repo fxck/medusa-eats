@@ -1,0 +1,42 @@
+project:
+  name: recipe-medusa-eats
+  tags:
+    - zerops-recipe
+    - medusa
+    
+services:
+  - hostname: frontend
+    type: nodejs@20
+    envSecrets:
+      REVALIDATE_SECRET: supersecret
+
+  - hostname: storage
+    type: object-storage
+    objectStorageSize: 2
+    
+  - hostname: redis
+    type: keydb@6
+    mode: NON_HA
+
+  - hostname: db
+    type: postgresql@14
+    mode: HA
+    
+  - hostname: backend
+    type: nodejs@20
+    envSecrets:
+      ADMIN_CORS: https://medusa-admin.fxck.dev
+      COOKIE_SECRET: asdasdasomething
+      JWT_SECRET: something
+      MINIO_SECRET_KEY: ${storage_secretAccessKey}
+      MINIO_ACCESS_KEY: ${storage_accessKeyId}
+    
+  - hostname: adminer
+    type: php-apache@8.0
+    buildFromGit: https://github.com/zeropsio/recipe-adminer
+    enableSubdomainAccess: true
+
+  - hostname: mailpit
+    type: go@1
+    buildFromGit: https://github.com/zeropsio/recipe-mailpit
+    enableSubdomainAccess: true
