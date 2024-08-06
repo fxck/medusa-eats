@@ -1,0 +1,19 @@
+zerops:
+  - setup: backend
+    build:
+      base: nodejs@20
+      buildCommands:
+        - |
+          cd backend
+          yarn
+          yarn build
+      deployFiles: 
+        - ./
+    run:
+      base: nodejs@20
+      initCommands:
+        - zsc execOnce $appVersionId npx medusa migrations run
+        - zsc execOnce $appVersionId npx medusa links sync
+        - zsc execOnce initialize npx medusa exec ./src/scripts/seed.ts
+        - zsc execOnce initialize npx medusa user -e admin@email.com -p supersecret
+      start: yarn start
