@@ -20,6 +20,6 @@ zerops:
       initCommands:
         - zsc execOnce $appVersionId npx medusa migrations run
         - zsc execOnce $appVersionId npx medusa links sync
-        - zsc execOnce initialize npx medusa exec ./src/scripts/seed.ts
-        - zsc execOnce initialize npx medusa user -e admin@email.com -p supersecret
+        - zsc execOnce seed npx medusa exec ./src/scripts/seed.ts
+        - zsc execOnce seed npx medusa user -e admin@email.com -p supersecret
       start: yarn start
