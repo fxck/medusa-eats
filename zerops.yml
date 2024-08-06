@@ -11,6 +11,12 @@ zerops:
         - ./backend/~
     run:
       base: nodejs@20
+      envVariables:
+        DATABASE_TYPE: postgres
+        DATABASE_URL: postgresql://${db_user}:${db_password}@db:5432
+        MINIO_BUCKET: ${storage_bucketName}
+        MINIO_ENDPOINT: ${storage_apiUrl}
+      REDIS_URL: redis://redis:6379
       initCommands:
         - zsc execOnce $appVersionId npx medusa migrations run
         - zsc execOnce $appVersionId npx medusa links sync
