@@ -13,13 +13,14 @@ zerops:
       base: nodejs@20
       envVariables:
         DATABASE_TYPE: postgres
+        NODE_ENV: production
         DATABASE_URL: postgresql://${db_user}:${db_password}@db:5432/${db_hostname}
         MINIO_BUCKET: ${storage_bucketName}
         MINIO_ENDPOINT: ${storage_apiUrl}
       REDIS_URL: redis://redis:6379
       initCommands:
-        - zsc execOnce $appVersionId npx medusa migrations run
-        - zsc execOnce $appVersionId npx medusa links sync
-        - zsc execOnce seed npx medusa exec ./src/scripts/seed.ts
-        - zsc execOnce seed npx medusa user -e admin@email.com -p supersecret
+        - zsc execOnce ${appVersionId}_migration npx medusa migrations run
+        - zsc execOnce ${appVersionId}_links npx medusa links sync
+        - zsc execOnce dataSeed npx medusa exec ./src/scripts/seed.ts
+        - zsc execOnce adminUserSeed npx medusa user -e admin@email.com -p supersecret
       start: yarn start
