@@ -4,7 +4,7 @@ project:
   tags:
     - zerops-recipe
     - medusa
-    
+
 services:
   - hostname: backend
     type: nodejs@20
@@ -16,9 +16,11 @@ services:
       JWT_SECRET: <@generateRandomString(<32>)>
       MINIO_SECRET_KEY: ${storage_secretAccessKey}
       MINIO_ACCESS_KEY: ${storage_accessKeyId}
-    
+
   - hostname: frontend
     type: nodejs@20
+    buildFromGit: https://github.com/fxck/medusa-eats
+    enableSubdomainAccess: true
     envSecrets:
       REVALIDATE_SECRET: supersecret
 
@@ -26,7 +28,7 @@ services:
     type: object-storage
     objectStorageSize: 2
     priority: 1
-    
+
   - hostname: redis
     type: keydb@6
     mode: NON_HA
