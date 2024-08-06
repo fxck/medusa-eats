@@ -39,7 +39,7 @@ export default defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
     databaseDriverOptions: process.env.NODE_ENV !== "development"
-      ? { ssl: { rejectUnauthorized: false } }
+      ? { connection: { ssl: { rejectUnauthorized: false } } }
       : {},
     redisUrl: REDIS_URL,
   },
