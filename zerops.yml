@@ -7,8 +7,8 @@ zerops:
           cd backend
           yarn
           yarn build
-      deployFiles: 
-        - ./
+      deployFiles:
+        - ./backend/~
     run:
       base: nodejs@20
       initCommands:
