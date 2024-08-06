@@ -1,6 +1,8 @@
 zerops:
   - setup: backend
     build:
+      envVariables:
+        BACKEND_URL: ${zeropsSubdomain}
       base: nodejs@20
       buildCommands:
         - |
@@ -21,8 +23,6 @@ zerops:
         MINIO_ENDPOINT: ${storage_apiUrl}
         REDIS_URL: redis://redis:6379
         EVENTS_REDIS_URL: redis://redis:6379
-        MEDUSA_URL: ${zeropsSubdomain}
-        VITE_MEDUSA_BACKEND_URL: ${zeropsSubdomain}
       initCommands:
         - zsc execOnce ${appVersionId}_migration npx medusa migrations run
         - zsc execOnce ${appVersionId}_links npx medusa links sync

@@ -23,7 +23,7 @@ const DATABASE_URL =
 
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
-const BACKEND_URL = process.env.BACKEND_URL || "";
+const BACKEND_URL = process.env.BACKEND_URL || "https://backend-3f1-9000.prg1.zerops.app/";
 
 export default defineConfig({
   admin: {
