@@ -22,5 +22,5 @@ zerops:
         - zsc execOnce ${appVersionId}_migration npx medusa migrations run
         - zsc execOnce ${appVersionId}_links npx medusa links sync
         - zsc execOnce -l initialDataSeed npx medusa exec ./src/scripts/seed.ts
-        - zsc execOnce -l initialAdminUser npx medusa user -e admin@email.com -p supersecret
+        - zsc execOnce -l initialAdminUser -- npx medusa user -e admin@email.com -p supersecret
       start: yarn start
