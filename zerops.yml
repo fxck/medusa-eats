@@ -18,6 +18,7 @@ zerops:
         MINIO_BUCKET: ${storage_bucketName}
         MINIO_ENDPOINT: ${storage_apiUrl}
         REDIS_URL: redis://redis:6379
+        EVENTS_REDIS_URL: redis://redis:6379
       initCommands:
         - zsc execOnce ${appVersionId}_migration npx medusa migrations run
         - zsc execOnce ${appVersionId}_links npx medusa links sync
@@ -27,4 +28,4 @@ zerops:
         - port: 9000
           httpSupport: true
       start: yarn start
-
+      
