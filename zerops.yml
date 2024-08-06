@@ -31,7 +31,7 @@ zerops:
   - setup: frontend
     build:
       base: nodejs@20
-      builCommands:
+      buildCommands:
         - |
           cd frontend
           yarn
