@@ -27,6 +27,7 @@
     "@medusajs/currency": "preview",
     "@medusajs/customer": "preview",
     "@medusajs/event-bus-local": "preview",
+    "@medusajs/event-bus-redis": "preview",
     "@medusajs/file": "preview",
     "@medusajs/file-local-next": "preview",
     "@medusajs/fulfillment": "preview",
