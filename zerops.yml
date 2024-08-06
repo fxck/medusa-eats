@@ -50,4 +50,4 @@ zerops:
         - port: 3000
           httpSupport: true
       envVariables:
-        BACKEND_URL: http://backend:9000
+        BACKEND_URL: ${backend_zeropsSubdomain}

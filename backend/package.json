@@ -20,9 +20,9 @@
     "setup-db": "npx medusa build && npx medusa migrations run && npx medusa links sync && medusa exec ./src/scripts/seed.ts && npx medusa user -e admin@email.com -p supersecret"
   },
   "dependencies": {
+    "@medusajs/admin": "preview",
     "@medusajs/api-key": "preview",
     "@medusajs/auth": "preview",
-    "@medusajs/admin": "preview",
     "@medusajs/cache-inmemory": "preview",
     "@medusajs/cart": "preview",
     "@medusajs/currency": "preview",
@@ -58,6 +58,7 @@
     "medusa-core-utils": "preview",
     "prism-react-renderer": "^2.0.4",
     "prop-types": "^15.8.1",
+    "sharp": "^0.33.4",
     "zod": "^3.22.4"
   },
   "devDependencies": {
