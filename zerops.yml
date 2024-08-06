@@ -13,7 +13,7 @@ zerops:
       base: nodejs@20
       envVariables:
         DATABASE_TYPE: postgres
-        DATABASE_URL: postgresql://${db_user}:${db_password}@db:5432
+        DATABASE_URL: postgresql://${db_user}:${db_password}@db:5432/${db_hostname}
         MINIO_BUCKET: ${storage_bucketName}
         MINIO_ENDPOINT: ${storage_apiUrl}
       REDIS_URL: redis://redis:6379
