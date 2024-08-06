@@ -48,6 +48,12 @@ export default defineConfig({
     deliveryModuleService: {
       resolve: "./modules/delivery",
     },
+    eventBus: {
+      resolve: "@medusajs/event-bus-redis",
+      options: {
+        redisUrl: process.env.EVENTS_REDIS_URL,
+      },
+    },
     [Modules.FULFILLMENT]: {
       options: {
         providers: [
@@ -59,4 +65,22 @@ export default defineConfig({
       },
     },
   },
+  plugins: [
+    {
+      resolve: `medusa-file-minio`,
+      options: {
+          endpoint: process.env.MINIO_ENDPOINT,
+          bucket: process.env.MINIO_BUCKET,
+          access_key_id: process.env.MINIO_ACCESS_KEY,
+          secret_access_key: process.env.MINIO_SECRET_KEY,
+      },
+    },
+    {
+      resolve: "@medusajs/admin",
+      /** @type {import('@medusajs/admin').PluginOptions} */
+      options: {
+        // ...
+      },
+    },
+  ],
 });
