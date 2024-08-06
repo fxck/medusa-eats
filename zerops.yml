@@ -28,4 +28,22 @@ zerops:
         - port: 9000
           httpSupport: true
       start: yarn start
-      
+  - setup: frontend
+    build:
+      base: nodejs@20
+      builCommands:
+        - |
+          cd frontend
+          yarn
+          yarn build
+      deployFiles:
+        - frontend/~.next
+        - frontend/~package.json
+        - frontend/~next.config.mjs
+        - frontend/~node_modules
+        - frontend/~public
+    run:
+      base: nodejs@20
+      start: yarn start
+      envVariables:
+        BACKEND_URL: http://backend:9000
