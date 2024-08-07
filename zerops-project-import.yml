@@ -12,6 +12,7 @@ services:
     enableSubdomainAccess: true
     envSecrets:
       ADMIN_CORS: ${zeropsSubdomain}
+      SUPERADMIN_PASSWORD: <@generateRandomString(<12>)>
       COOKIE_SECRET: <@generateRandomString(<32>)>
       JWT_SECRET: <@generateRandomString(<32>)>
       MINIO_SECRET_KEY: ${storage_secretAccessKey}
@@ -22,7 +23,7 @@ services:
     buildFromGit: https://github.com/fxck/medusa-eats
     enableSubdomainAccess: true
     envSecrets:
-      REVALIDATE_SECRET: supersecret
+      REVALIDATE_SECRET: <@generateRandomString(<32>)>
 
   - hostname: storage
     type: object-storage
