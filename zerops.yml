@@ -2,7 +2,7 @@ zerops:
   - setup: backend
     build:
       envVariables:
-        BACKEND_URL: ${zeropsSubdomain}
+        BACKEND_URL: ${RUNTIME_zeropsSubdomain}
       base: nodejs@20
       buildCommands:
         - |
