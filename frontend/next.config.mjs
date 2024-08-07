@@ -13,11 +13,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "zerops.app",
+        hostname: "**.zerops.app",
       },
       {
         protocol: "https",
-        hostname: "zerops.io",
+        hostname: "**.zerops.io",
       },
       {
         protocol: "https",
