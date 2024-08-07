@@ -3,10 +3,6 @@ zerops:
     build:
       envVariables:
         BACKEND_URL: ${RUNTIME_zeropsSubdomain}
-        MINIO_BUCKET: ${storage_bucketName}
-        MINIO_ENDPOINT: ${storage_apiUrl}
-        MINIO_SECRET_KEY: ${storage_secretAccessKey}
-        MINIO_ACCESS_KEY: ${storage_accessKeyId}
       base: nodejs@20
       buildCommands:
         - |

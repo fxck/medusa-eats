@@ -75,12 +75,5 @@ export default defineConfig({
         secret_access_key: process.env.MINIO_SECRET_KEY,
       },
     },
-    {
-      resolve: "@medusajs/admin",
-      /** @type {import('@medusajs/admin').PluginOptions} */
-      options: {
-        // ...
-      },
-    },
   ],
 });
