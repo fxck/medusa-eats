@@ -18,11 +18,13 @@ zerops:
         NODE_ENV: production
         BACKEND_URL: ${zeropsSubdomain}
         FRONTEND_URL: ${frontend_zeropsSubdomain}
-        DATABASE_URL: postgresql://${db_user}:${db_password}@db:5432/${db_hostname}?sslmode=disable
+        DATABASE_URL: postgresql://${db_user}:${db_password}@${db_hostname}:5432/${db_hostname}
         MINIO_BUCKET: ${storage_bucketName}
         MINIO_ENDPOINT: ${storage_apiUrl}
-        REDIS_URL: redis://redis:6379
-        EVENTS_REDIS_URL: redis://redis:6379
+        REDIS_URL: redis://${redis_hostname}:6379
+        EVENTS_REDIS_URL: redis://${redis_hostname}:6379
+        MINIO_SECRET_KEY: ${storage_secretAccessKey}
+        MINIO_ACCESS_KEY: ${storage_accessKeyId}
       initCommands:
         - zsc execOnce ${appVersionId}_migration npx medusa migrations run
         - zsc execOnce ${appVersionId}_links npx medusa links sync
