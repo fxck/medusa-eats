@@ -26,6 +26,7 @@ services:
 
   - hostname: storage
     type: object-storage
+    objectStoragePolicy: public-read
     objectStorageSize: 2
     priority: 1
 
