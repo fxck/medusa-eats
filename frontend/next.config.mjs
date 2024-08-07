@@ -13,6 +13,14 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "zerops.app",
+      },
+      {
+        protocol: "https",
+        hostname: "zerops.io",
+      },
+      {
+        protocol: "https",
         hostname: "medusa-eats.vercel.app",
       },
     ],
