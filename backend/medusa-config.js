@@ -64,16 +64,24 @@ export default defineConfig({
         ],
       },
     },
-  },
-  plugins: [
-    {
-      resolve: `medusa-file-minio`,
+    [Modules.FILE]: {
+      resolve: "@medusajs/file",
       options: {
-        endpoint: process.env.MINIO_ENDPOINT,
-        bucket: process.env.MINIO_BUCKET,
-        access_key_id: process.env.MINIO_ACCESS_KEY,
-        secret_access_key: process.env.MINIO_SECRET_KEY,
+        providers: [
+          {
+            resolve: "@medusajs/file-s3",
+            id: "s3",
+            options: {
+              file_url: process.env.MINIO_ENDPOINT,
+              access_key_id: process.env.MINIO_ACCESS_KEY,
+              secret_access_key: process.env.MINIO_SECRET_KEY,
+              region: 'us-east-1',
+              bucket: process.env.MINIO_BUCKET,
+              endpoint: process.env.MINIO_ENDPOINT,
+            },
+          },
+        ],
       },
     },
-  ],
+  },
 });
