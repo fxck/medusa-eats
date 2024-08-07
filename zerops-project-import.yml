@@ -39,13 +39,3 @@ services:
     type: postgresql@16
     mode: HA
     priority: 1
-
-  - hostname: adminer
-    type: php-apache@8.3
-    buildFromGit: https://github.com/zeropsio/recipe-adminer
-    enableSubdomainAccess: true
-
-  - hostname: mailpit
-    type: go@1
-    buildFromGit: https://github.com/zeropsio/recipe-mailpit
-    enableSubdomainAccess: true
