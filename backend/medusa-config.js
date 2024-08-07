@@ -79,7 +79,7 @@ export default defineConfig({
               bucket: process.env.MINIO_BUCKET,
               endpoint: process.env.MINIO_ENDPOINT,
               additional_client_config: {
-                s3ForcePathStyle: true
+                forcePathStyle: true
               }
             },
           },
