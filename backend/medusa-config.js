@@ -78,6 +78,9 @@ export default defineConfig({
               region: 'us-east-1',
               bucket: process.env.MINIO_BUCKET,
               endpoint: process.env.MINIO_ENDPOINT,
+              additional_client_config: {
+                s3ForcePathStyle: true
+              }
             },
           },
         ],
