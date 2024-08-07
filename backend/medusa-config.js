@@ -72,7 +72,7 @@ export default defineConfig({
             resolve: "@medusajs/file-s3",
             id: "s3",
             options: {
-              file_url: process.env.MINIO_ENDPOINT,
+              file_url: process.env.MINIO_ENDPOINT + '/' + process.env.MINIO_BUCKET,
               access_key_id: process.env.MINIO_ACCESS_KEY,
               secret_access_key: process.env.MINIO_SECRET_KEY,
               region: 'us-east-1',
