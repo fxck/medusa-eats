@@ -1,4 +1,5 @@
-# Zerops x Medusa
+# Zerops x Medusa eats
+
 <p align="center">
   <a href="https://www.medusajs.com">
   <picture>
