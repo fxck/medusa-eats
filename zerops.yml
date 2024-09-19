@@ -28,8 +28,8 @@ zerops:
       initCommands:
         - zsc execOnce ${appVersionId}_migration npx medusa migrations run
         - zsc execOnce ${appVersionId}_links npx medusa links sync
-        - zsc execOnce -l initialData npx medusa exec ./src/scripts/seed.ts
-        - zsc execOnce -l initialAdmin -- npx medusa user -e admin@email.com -p $SUPERADMIN_PASSWORD
+        - zsc execOnce -r initialData npx medusa exec ./src/scripts/seed.ts
+        - zsc execOnce -r initialAdmin -- npx medusa user -e admin@email.com -p $SUPERADMIN_PASSWORD
       ports:
         - port: 9000
           httpSupport: true
